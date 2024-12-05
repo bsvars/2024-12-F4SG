@@ -1,9 +1,9 @@
 ---
-title: "<span style='color: #ffd700;'>Bayesian Structural Vector Autoregressions</span>" 
+title: "" 
 author: "<span style='color: #ffd700;'>by Tomasz Woźniak</span>"
 email: "tomasz.wozniak@unimelb.edu.au"
 title-slide-attributes:
-  data-background-color: "#ff69b4"
+  data-background-color: "#00bf63"
 number-sections: false
 format: 
   revealjs: 
@@ -16,11 +16,30 @@ execute:
   echo: true
 ---
 
-##  {background-color="#ff69b4"}
+
+```{r palette}
+#| echo: false
+gre  = "#00bf63"
+vio  = "#8c52ff"
+grad = grDevices::colorRampPalette(c(gre, vio))(5)
+```
+
+
+##  {background-color="#00bf63"}
+
+![](bsvars.org.png){.absolute top=80 right=750 width="400"}
+![](bsvars.png){.absolute top=80 right=350 width="400"}
+![](bsvarSIGNs.png){.absolute top=80 right=-50 width="400"}
+
+
+
+
+
+##  {background-color="#00bf63"}
 
 $$ $$
 
-### Structural Vector Autoregressions {style="color:#ffd700;"}
+### Structural Vector Autoregressions
 
 ### Identification of Structural VARs {style="color:#ffd700;"}
 
@@ -28,19 +47,15 @@ $$ $$
 
 ### Bayesian Estimation {style="color:#ffd700;"}
 
-### Monetary Policy Analysis Using the  [bsvars](https://cran.r-project.org/package=bsvars) Package {style="color:#ffd700;"}
+### Monetary Policy Analysis Using the  [bsvars](https://cran.r-project.org/package=bsvars) Package
 
 
 
 
 
-##  {background-color="#ff69b4"}
-
-![](bsvars.png){.absolute top=30 right=275 width="500"}
 
 
-
-## <span style="color: #ffd700;">Materials</span> {background-color="#ff69b4"} 
+## Materials {background-color="#00bf63"} 
 
 $$ $$
 
@@ -53,7 +68,7 @@ $$ $$
 ### Tasks{style="color:#ffd700;"}
 
 
-## <span style="color: #ffd700;">Structural Vector Autoregressions</span> {background-color="#ff69b4"}
+## <span style="color: #ffd700;">Structural Vector Autoregressions</span> {background-color="#00bf63"}
 
 ## Structural Vector Autoregressions
 
@@ -109,7 +124,7 @@ uncorrelated shocks* on variables $y_t$
 
 
 
-##  {background-color="#ff69b4"}
+##  {background-color="#00bf63"}
 
 ![](social.png){.absolute top=30 right=200 width="800"}
 
