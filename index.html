@@ -400,7 +400,7 @@
 <h3 style="color:#ff68b4;" id="structural-vector-autoregressions">structural vector autoregressions</h3>
 <h3 style="color:#ff68b4;" id="predictive-analyses-using-structural-vars">predictive analyses using structural VARs</h3>
 <h3 style="color:#ff68b4;" id="bsvars-and-bsvarsigns-features">bsvars and bsvarSIGNs features</h3>
-<h3 style="color:#ff68b4;" id="a-small-monetary-policy-system-analysis">a small monetary policy system analysis</h3>
+<h3 style="color:#ff68b4;" id="a-small-fiscal-policy-system-analysis">a small fiscal policy system analysis</h3>
 </section>
 <section id="materials" class="slide level2" data-background-color="#001D31">
 <h2><span style="color: #ff68b4;">materials</span></h2>
@@ -900,58 +900,52 @@ y_t &amp;= \mathbf{B}^{-1}\mathbf{u}_t + \mathbf{A}_1 y_{t-1}\\
 </div>
 </div>
 </section>
-<section id="a-small-monetary-policy-system-analysis-1" class="slide level2" data-background-color="#001D31">
-<h2><span style="color: #ff68b4;">a small monetary policy system analysis</span></h2>
+<section id="a-small-fiscal-policy-system-analysis-1" class="slide level2" data-background-color="#001D31">
+<h2><span style="color: #ff68b4;">a small fiscal policy system analysis</span></h2>
 </section>
-<section id="a-small-monetary-policy-system-analysis-2" class="slide level2">
-<h2>a small monetary policy system analysis</h2>
+<section id="a-small-fiscal-policy-system-analysis-2" class="slide level2">
+<h2>a small fiscal policy system analysis</h2>
 <div class="footer">
 <p><a href="https://bsvars.org">bsvars.org</a></p>
 </div>
-</section>
-<section id="bsvars-modeling-of-monetary-policy" class="slide level2">
-<h2><a href="https://bsvars.github.io" style="color:#8c52ff;">bsvars</a> modeling of monetary policy</h2>
-<h3 id="australian-domestic-sector.">Australian domestic sector.</h3>
 <p><span class="math display">\[\begin{align}
-y_t = \begin{bmatrix} rgdp_t &amp; cpi_t &amp; CR_t &amp; EX_t &amp; aord_t \end{bmatrix}'
+y_t = \begin{bmatrix} ttr_t &amp; gs_t &amp; gdp_t \end{bmatrix}'
 \end{align}\]</span></p>
 <ul>
-<li>monthly data from August 1990 to March 2024</li>
-<li>quarterly variables interpolated to monthly frequency</li>
+<li>US quarterly data from Q1 1948 to Q2 2024</li>
+<li>all variables are in real, log, per person terms</li>
 </ul>
-</section>
-<section id="bsvars-modeling-of-monetary-policy-1" class="slide level2">
-<h2><a href="https://bsvars.github.io" style="color:#8c52ff;">bsvars</a> modeling of monetary policy</h2>
-<h3 id="foreign-sector.">Foreign sector.</h3>
-<p><span class="math display">\[\begin{align}
-x_t = \begin{bmatrix} rgdp_t^{(US)} &amp; cpi_t^{(US)} &amp; FFR_t \end{bmatrix}'
-\end{align}\]</span></p>
-<ul>
-<li>monthly data from August 1990 to March 2024</li>
-<li>quarterly variables interpolated to monthly frequency</li>
-<li>contemporaneous and four lagged values are included in the model as exogenous variables</li>
-</ul>
-</section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-<p><img data-src="bsvars.png" class="absolute" style="top: 550px; right: 10px; width: 120px; "></p>
-<h3 id="zero-restriction-identified-system.">Zero-restriction-identified system.</h3>
+<div class="cell" data-hash="index_cache/revealjs/specc_ec8e1c9fde1b2eb513020aab72ab0be1">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">library</span>(bsvars)</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">data</span>(us_fiscal_lsuw)    <span class="co"># upload dependent variables</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="fu">plot</span>(us_fiscal_lsuw, <span class="at">col =</span> <span class="st">"#ff68b4"</span>, <span class="at">lwd =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/specc-1.png" width="960" class="r-stretch"></section>
+<section id="a-small-fiscal-policy-system-analysis-3" class="slide level2">
+<h2>a small fiscal policy system analysis</h2>
+<p><img data-src="bsvars.png" class="absolute" style="top: 170px; right: 10px; width: 120px; "></p>
+<p><img data-src="bsvarSIGNs.png" class="absolute" style="top: 430px; right: 10px; width: 120px; "></p>
+<h3 id="system-with-exclusion-restrictions.">system with exclusion restrictions.</h3>
 <p><span class="math display">\[\begin{align}
 \begin{bmatrix}
-B_{0.11}&amp;0&amp;0&amp;0&amp;0\\
-B_{0.21}&amp;B_{0.22}&amp;0&amp;0&amp;0\\
-B_{0.31}&amp;B_{0.32}&amp;B_{0.33}&amp;0&amp;0\\
-B_{0.41}&amp;B_{0.42}&amp;B_{0.43}&amp;B_{0.44}&amp;0\\
-B_{0.51}&amp;B_{0.52}&amp;B_{0.53}&amp;B_{0.54}&amp;B_{0.55}
+B_{0.11}&amp;0&amp;0\\
+B_{0.21}&amp;B_{0.22}&amp;0\\
+B_{0.31}&amp;B_{0.32}&amp;B_{0.33}
 \end{bmatrix}
-\begin{bmatrix}rgdp_t \\ cpi_t \\ CR_t \\ EX_t\\ aord_t \end{bmatrix} &amp;= \dots +
-\begin{bmatrix} u_t^{ad} \\ u_t^{as} \\ u_t^{mps} \\ u_t^{ex} \\ u_t^{aord} \end{bmatrix}
+\begin{bmatrix}ttr_t \\ gs_t \\ gdp_t \end{bmatrix} &amp;= \dots +
+\begin{bmatrix} u_t^{ttr} \\ u_t^{gs} \\ u_t^{gdp}\end{bmatrix}
 \end{align}\]</span></p>
-<h3 id="identified-shocks.">Identified shocks.</h3>
-<ul>
-<li><span class="math inline">\(u_t^{mps}\)</span> - monetary policy shock</li>
-<li><span class="math inline">\(u_t^{ex}\)</span> - currency shock</li>
-</ul>
+<h3 id="system-with-sign-restrictions.">system with sign restrictions.</h3>
+<p><span class="math display">\[\begin{align}
+\begin{bmatrix}
++&amp;*&amp;+\\
+*&amp;+&amp;*\\
+*&amp;*&amp;+
+\end{bmatrix}
+\begin{bmatrix}ttr_t \\ gs_t \\ gdp_t \end{bmatrix} &amp;= \dots +
+\begin{bmatrix} u_t^{ttr} \\ u_t^{gs} \\ u_t^{gdp}\end{bmatrix}
+\end{align}\]</span></p>
 </section>
 <section id="specify-and-estimate-the-svar" class="slide level2">
 <h2>specify and estimate the SVAR</h2>
@@ -959,23 +953,19 @@ B_{0.51}&amp;B_{0.52}&amp;B_{0.53}&amp;B_{0.54}&amp;B_{0.55}
 <p><span class="math display">\[\begin{align}
 &amp;
 \end{align}\]</span></p>
-<div class="cell" data-hash="index_cache/revealjs/spec_55ed9cfca284cea8c0ec5d920f5d139e">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">library</span>(bsvars)</span>
-<span id="cb15-2"><a href="#cb15-2"></a></span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="co"># upload data</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="fu">data</span>(us_fiscal_lsuw)    <span class="co"># upload dependent variables</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a><span class="fu">data</span>(us_fiscal_ex)      <span class="co"># upload exogenous variables</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a></span>
-<span id="cb15-7"><a href="#cb15-7"></a><span class="co"># specify the model and set seed</span></span>
-<span id="cb15-8"><a href="#cb15-8"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb15-9"><a href="#cb15-9"></a>spec  <span class="ot">=</span> specify_bsvar<span class="sc">$</span><span class="fu">new</span>(</span>
-<span id="cb15-10"><a href="#cb15-10"></a>  us_fiscal_lsuw, </span>
-<span id="cb15-11"><a href="#cb15-11"></a>  <span class="at">p =</span> <span class="dv">4</span>, </span>
-<span id="cb15-12"><a href="#cb15-12"></a>  <span class="at">exogenous =</span> us_fiscal_ex</span>
-<span id="cb15-13"><a href="#cb15-13"></a>)</span>
-<span id="cb15-14"><a href="#cb15-14"></a></span>
-<span id="cb15-15"><a href="#cb15-15"></a><span class="co"># run the burn-in</span></span>
-<span id="cb15-16"><a href="#cb15-16"></a>burn        <span class="ot">=</span> <span class="fu">estimate</span>(spec, <span class="at">S =</span> <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/spec_d1d6bc6874ce46f6df4fc81bb3fa016c">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">data</span>(us_fiscal_ex)      <span class="co"># upload exogenous variables</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="co"># specify the model and set seed</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb16-5"><a href="#cb16-5"></a>spec  <span class="ot">=</span> specify_bsvar<span class="sc">$</span><span class="fu">new</span>(</span>
+<span id="cb16-6"><a href="#cb16-6"></a>  us_fiscal_lsuw, </span>
+<span id="cb16-7"><a href="#cb16-7"></a>  <span class="at">p =</span> <span class="dv">4</span>, </span>
+<span id="cb16-8"><a href="#cb16-8"></a>  <span class="at">exogenous =</span> us_fiscal_ex</span>
+<span id="cb16-9"><a href="#cb16-9"></a>)</span>
+<span id="cb16-10"><a href="#cb16-10"></a></span>
+<span id="cb16-11"><a href="#cb16-11"></a><span class="co"># run the burn-in</span></span>
+<span id="cb16-12"><a href="#cb16-12"></a>burn        <span class="ot">=</span> <span class="fu">estimate</span>(spec, <span class="at">S =</span> <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>**************************************************|
 bsvars: Bayesian Structural Vector Autoregressions|
@@ -987,8 +977,8 @@ bsvars: Bayesian Structural Vector Autoregressions|
  Press Esc to interrupt the computations
 **************************************************|</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># estimate the model</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>post      <span class="ot">=</span> <span class="fu">estimate</span>(burn, <span class="at">S =</span> <span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># estimate the model</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>post      <span class="ot">=</span> <span class="fu">estimate</span>(burn, <span class="at">S =</span> <span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>**************************************************|
 bsvars: Bayesian Structural Vector Autoregressions|
@@ -1009,7 +999,7 @@ bsvars: Bayesian Structural Vector Autoregressions|
 &amp;
 \end{align}\]</span></p>
 <div class="cell" data-hash="index_cache/revealjs/bs00_a5c0997c957d8b2249598f24440861bb">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>post <span class="sc">|&gt;</span> <span class="fu">compute_impulse_responses</span>(<span class="at">horizon =</span> <span class="dv">40</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">probability =</span> <span class="fl">0.68</span>, <span class="at">col =</span> <span class="st">"#ff68b4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>post <span class="sc">|&gt;</span> <span class="fu">compute_impulse_responses</span>(<span class="at">horizon =</span> <span class="dv">40</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">probability =</span> <span class="fl">0.68</span>, <span class="at">col =</span> <span class="st">"#ff68b4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img data-src="index_files/figure-revealjs/bs00-1.png" width="960"></p>
 </div>
@@ -1022,7 +1012,7 @@ bsvars: Bayesian Structural Vector Autoregressions|
 &amp;
 \end{align}\]</span></p>
 <div class="cell" data-hash="index_cache/revealjs/bs00fevd_881ddea4496e83addbf0cc25f6b4cd96">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>post <span class="sc">|&gt;</span> <span class="fu">compute_variance_decompositions</span>(<span class="at">horizon =</span> <span class="dv">40</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">col =</span> grad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>post <span class="sc">|&gt;</span> <span class="fu">compute_variance_decompositions</span>(<span class="at">horizon =</span> <span class="dv">40</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">col =</span> grad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img data-src="index_files/figure-revealjs/bs00fevd-1.png" width="960"></p>
 </div>
@@ -1034,11 +1024,12 @@ bsvars: Bayesian Structural Vector Autoregressions|
 <p><span class="math display">\[\begin{align}
 &amp;
 \end{align}\]</span></p>
-<div class="cell" data-hash="index_cache/revealjs/bs00for_4f22fd892e1e25f5819c890b209df66a">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">data</span>(us_fiscal_ex_forecasts)      <span class="co"># upload exogenous variables future values</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a>post <span class="sc">|&gt;</span> </span>
-<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">forecast</span>(<span class="at">horizon =</span> <span class="dv">8</span>, <span class="at">exogenous_forecast =</span> us_fiscal_ex_forecasts) <span class="sc">|&gt;</span> </span>
-<span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">plot</span>(<span class="at">col =</span> <span class="st">"#ff68b4"</span>, <span class="at">data_in_plot =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/bs00for_a9e4a179b01990623009651400292208">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">data</span>(us_fiscal_ex_forecasts)      <span class="co"># upload exogenous variables future values</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">data</span>(us_fiscal_cond_forecasts)    <span class="co"># upload a matrix with projected ttr </span></span>
+<span id="cb22-3"><a href="#cb22-3"></a>post <span class="sc">|&gt;</span> </span>
+<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">forecast</span>(<span class="at">horizon =</span> <span class="dv">8</span>, <span class="at">exogenous_forecast =</span> us_fiscal_ex_forecasts, <span class="at">conditional_forecast =</span> us_fiscal_cond_forecasts) <span class="sc">|&gt;</span> </span>
+<span id="cb22-5"><a href="#cb22-5"></a>  <span class="fu">plot</span>(<span class="at">col =</span> <span class="st">"#ff68b4"</span>, <span class="at">data_in_plot =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img data-src="index_files/figure-revealjs/bs00for-1.png" width="960"></p>
 </div>
@@ -1051,35 +1042,35 @@ bsvars: Bayesian Structural Vector Autoregressions|
 &amp;
 \end{align}\]</span></p>
 <div class="cell" data-hash="index_cache/revealjs/specs_ef48f0513a92e64b3410669f72544bf6">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">library</span>(bsvarSIGNs)</span>
-<span id="cb22-2"><a href="#cb22-2"></a></span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="co"># specify the model and set seed</span></span>
-<span id="cb22-4"><a href="#cb22-4"></a>sign <span class="ot">=</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb22-5"><a href="#cb22-5"></a><span class="fu">diag</span>(sign) <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb22-6"><a href="#cb22-6"></a>sign[<span class="dv">1</span>, <span class="dv">3</span>] <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb22-7"><a href="#cb22-7"></a>sign</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">library</span>(bsvarSIGNs)</span>
+<span id="cb23-2"><a href="#cb23-2"></a></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="co"># specify the model and set seed</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a>sign <span class="ot">=</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="fu">diag</span>(sign) <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb23-6"><a href="#cb23-6"></a>sign[<span class="dv">1</span>, <span class="dv">3</span>] <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb23-7"><a href="#cb23-7"></a>sign</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1   NA    1
 [2,]   NA    1   NA
 [3,]   NA   NA    1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># specify the model</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a>spec <span class="ot">=</span> specify_bsvarSIGN<span class="sc">$</span><span class="fu">new</span>(</span>
-<span id="cb24-3"><a href="#cb24-3"></a>  us_fiscal_lsuw,</span>
-<span id="cb24-4"><a href="#cb24-4"></a>  <span class="at">p =</span> <span class="dv">4</span>,</span>
-<span id="cb24-5"><a href="#cb24-5"></a>  <span class="at">sign_irf =</span> sign</span>
-<span id="cb24-6"><a href="#cb24-6"></a>)</span>
-<span id="cb24-7"><a href="#cb24-7"></a></span>
-<span id="cb24-8"><a href="#cb24-8"></a><span class="co"># estimate the hyper-parameters</span></span>
-<span id="cb24-9"><a href="#cb24-9"></a>spec<span class="sc">$</span>prior<span class="sc">$</span><span class="fu">estimate_hyper</span>(<span class="at">S =</span> <span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># specify the model</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>spec <span class="ot">=</span> specify_bsvarSIGN<span class="sc">$</span><span class="fu">new</span>(</span>
+<span id="cb25-3"><a href="#cb25-3"></a>  us_fiscal_lsuw,</span>
+<span id="cb25-4"><a href="#cb25-4"></a>  <span class="at">p =</span> <span class="dv">4</span>,</span>
+<span id="cb25-5"><a href="#cb25-5"></a>  <span class="at">sign_irf =</span> sign</span>
+<span id="cb25-6"><a href="#cb25-6"></a>)</span>
+<span id="cb25-7"><a href="#cb25-7"></a></span>
+<span id="cb25-8"><a href="#cb25-8"></a><span class="co"># estimate the hyper-parameters</span></span>
+<span id="cb25-9"><a href="#cb25-9"></a>spec<span class="sc">$</span>prior<span class="sc">$</span><span class="fu">estimate_hyper</span>(<span class="at">S =</span> <span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>**************************************************|
  Adaptive Metropolis MCMC: hyper parameters       |
 **************************************************|</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># estimate the model</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a>posts <span class="ot">=</span> <span class="fu">estimate</span>(spec, <span class="at">S =</span> <span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># estimate the model</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>posts <span class="ot">=</span> <span class="fu">estimate</span>(spec, <span class="at">S =</span> <span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>**************************************************|
  bsvarSIGNs: Bayesian Structural VAR with sign,   |
@@ -1098,7 +1089,7 @@ bsvars: Bayesian Structural Vector Autoregressions|
 &amp;
 \end{align}\]</span></p>
 <div class="cell" data-hash="index_cache/revealjs/bs00s_9c0a4cb0dc39fc714d624cb12736f2f1">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>posts <span class="sc">|&gt;</span> <span class="fu">compute_impulse_responses</span>(<span class="at">horizon =</span> <span class="dv">40</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">probability =</span> <span class="fl">0.68</span>, <span class="at">col =</span> <span class="st">"#001D31"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>posts <span class="sc">|&gt;</span> <span class="fu">compute_impulse_responses</span>(<span class="at">horizon =</span> <span class="dv">40</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">probability =</span> <span class="fl">0.68</span>, <span class="at">col =</span> <span class="st">"#001D31"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img data-src="index_files/figure-revealjs/bs00s-1.png" width="960"></p>
 </div>
@@ -1111,7 +1102,7 @@ bsvars: Bayesian Structural Vector Autoregressions|
 &amp;
 \end{align}\]</span></p>
 <div class="cell" data-hash="index_cache/revealjs/bs00fevds_1a4a3d3cba7d407e3c5d65293a1641ec">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>posts <span class="sc">|&gt;</span> <span class="fu">compute_variance_decompositions</span>(<span class="at">horizon =</span> <span class="dv">40</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">col =</span> grad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>posts <span class="sc">|&gt;</span> <span class="fu">compute_variance_decompositions</span>(<span class="at">horizon =</span> <span class="dv">40</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">col =</span> grad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img data-src="index_files/figure-revealjs/bs00fevds-1.png" width="960"></p>
 </div>
@@ -1124,15 +1115,15 @@ bsvars: Bayesian Structural Vector Autoregressions|
 &amp;
 \end{align}\]</span></p>
 <div class="cell" data-hash="index_cache/revealjs/bs00fors_f0a29d6d9d99c2127cebf268bf0f1aab">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>posts <span class="sc">|&gt;</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a>  <span class="fu">forecast</span>(<span class="at">horizon =</span> <span class="dv">8</span>) <span class="sc">|&gt;</span></span>
-<span id="cb30-3"><a href="#cb30-3"></a>  <span class="fu">plot</span>(<span class="at">col =</span> <span class="st">"#001D31"</span>, <span class="at">data_in_plot =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>posts <span class="sc">|&gt;</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a>  <span class="fu">forecast</span>(<span class="at">horizon =</span> <span class="dv">8</span>) <span class="sc">|&gt;</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a>  <span class="fu">plot</span>(<span class="at">col =</span> <span class="st">"#001D31"</span>, <span class="at">data_in_plot =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img data-src="index_files/figure-revealjs/bs00fors-1.png" width="960"></p>
 </div>
 </div>
 </section>
-<section id="section-2" class="slide level2" data-background-color="#001D31">
+<section id="section-1" class="slide level2" data-background-color="#001D31">
 <h2></h2>
 <p><img data-src="social.png" class="absolute" style="top: 10px; right: 10px; width: 1000px; "></p>
 <div class="footer footer-default">

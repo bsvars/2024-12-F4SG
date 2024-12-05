@@ -45,7 +45,7 @@ $$ $$
 
 ### bsvars and bsvarSIGNs features {style="color:#ff68b4;"}
 
-### a small monetary policy system analysis {style="color:#ff68b4;"}
+### a small fiscal policy system analysis {style="color:#ff68b4;"}
 
 
 
@@ -734,69 +734,62 @@ post |> forecast(horizon = 12) |> plot()
 
 
 
-## <span style="color: #ff68b4;">a small monetary policy system analysis</span> {background-color="#001D31"}
+## <span style="color: #ff68b4;">a small fiscal policy system analysis</span> {background-color="#001D31"}
 
-## a small monetary policy system analysis
+
+
+## a small fiscal policy system analysis
 
 ::: footer
 [bsvars.org](https://bsvars.org)
 :::
 
-
-
-
-## [bsvars](https://bsvars.github.io){style="color:#8c52ff;"} modeling of  monetary policy
-
-### Australian domestic sector.
-
 \begin{align}
-y_t = \begin{bmatrix} rgdp_t & cpi_t & CR_t & EX_t & aord_t \end{bmatrix}'
+y_t = \begin{bmatrix} ttr_t & gs_t & gdp_t \end{bmatrix}'
 \end{align}
 
-- monthly data from August 1990 to March 2024
-- quarterly variables interpolated to monthly frequency
+- US quarterly data from Q1 1948 to Q2 2024
+- all variables are in real, log, per person terms
+
+```{r specc}
+#| cache: true
+
+library(bsvars)
+data(us_fiscal_lsuw)    # upload dependent variables
+plot(us_fiscal_lsuw, col = "#ff68b4", lwd = 4)
+```
 
 
 
+## a small fiscal policy system analysis
 
-## [bsvars](https://bsvars.github.io){style="color:#8c52ff;"} modeling of  monetary policy
+![](bsvars.png){.absolute top=170 right=10 width="120"}
 
-### Foreign sector.
+![](bsvarSIGNs.png){.absolute top=430 right=10 width="120"}
 
-\begin{align}
-x_t = \begin{bmatrix} rgdp_t^{(US)} & cpi_t^{(US)} & FFR_t \end{bmatrix}'
-\end{align}
-
-- monthly data from August 1990 to March 2024
-- quarterly variables interpolated to monthly frequency
-- contemporaneous and four lagged values are included in the model as exogenous variables
-
-
-
-## 
-
-![](bsvars.png){.absolute top=550 right=10 width="120"}
-
-### Zero-restriction-identified system.
+### system with exclusion restrictions.
 
 \begin{align}
 \begin{bmatrix}
-B_{0.11}&0&0&0&0\\
-B_{0.21}&B_{0.22}&0&0&0\\
-B_{0.31}&B_{0.32}&B_{0.33}&0&0\\
-B_{0.41}&B_{0.42}&B_{0.43}&B_{0.44}&0\\
-B_{0.51}&B_{0.52}&B_{0.53}&B_{0.54}&B_{0.55}
+B_{0.11}&0&0\\
+B_{0.21}&B_{0.22}&0\\
+B_{0.31}&B_{0.32}&B_{0.33}
 \end{bmatrix}
-\begin{bmatrix}rgdp_t \\ cpi_t \\ CR_t \\ EX_t\\ aord_t \end{bmatrix} &= \dots +
-\begin{bmatrix} u_t^{ad} \\ u_t^{as} \\ u_t^{mps} \\ u_t^{ex} \\ u_t^{aord} \end{bmatrix}
+\begin{bmatrix}ttr_t \\ gs_t \\ gdp_t \end{bmatrix} &= \dots +
+\begin{bmatrix} u_t^{ttr} \\ u_t^{gs} \\ u_t^{gdp}\end{bmatrix}
 \end{align}
 
-### Identified shocks.
+### system with sign restrictions.
 
-- $u_t^{mps}$ - monetary policy shock
-- $u_t^{ex}$ - currency shock
-
-
+\begin{align}
+\begin{bmatrix}
++&*&+\\
+*&+&*\\
+*&*&+
+\end{bmatrix}
+\begin{bmatrix}ttr_t \\ gs_t \\ gdp_t \end{bmatrix} &= \dots +
+\begin{bmatrix} u_t^{ttr} \\ u_t^{gs} \\ u_t^{gdp}\end{bmatrix}
+\end{align}
 
 
 
@@ -812,10 +805,6 @@ B_{0.51}&B_{0.52}&B_{0.53}&B_{0.54}&B_{0.55}
 ```{r spec}
 #| cache: true
 
-library(bsvars)
-
-# upload data
-data(us_fiscal_lsuw)    # upload dependent variables
 data(us_fiscal_ex)      # upload exogenous variables
 
 # specify the model and set seed
@@ -875,8 +864,9 @@ post |> compute_variance_decompositions(horizon = 40) |> plot(col = grad)
 ```{r bs00for}
 #| cache: true
 data(us_fiscal_ex_forecasts)      # upload exogenous variables future values
+data(us_fiscal_cond_forecasts)    # upload a matrix with projected ttr 
 post |> 
-  forecast(horizon = 8, exogenous_forecast = us_fiscal_ex_forecasts) |> 
+  forecast(horizon = 8, exogenous_forecast = us_fiscal_ex_forecasts, conditional_forecast = us_fiscal_cond_forecasts) |> 
   plot(col = "#ff68b4", data_in_plot = 0.2)
 ```
 
