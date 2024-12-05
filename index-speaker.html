@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -325,82 +390,751 @@
     <div class="slides">
 
 
-<section id="section" class="slide level2" data-background-color="#00bf63">
+<section id="section" class="slide level2" data-background-color="#001D31">
 <h2></h2>
-<p><img data-src="bsvars.org.png" class="absolute" style="top: 80px; right: 750px; width: 400px; "> <img data-src="bsvars.png" class="absolute" style="top: 80px; right: 350px; width: 400px; "> <img data-src="bsvarSIGNs.png" class="absolute" style="top: 80px; right: -50px; width: 400px; "></p>
+<p><img data-src="bsvars.org.png" class="absolute" style="top: 80px; right: 725px; width: 400px; "> <img data-src="bsvars.png" class="absolute" style="top: 80px; right: 325px; width: 400px; "> <img data-src="bsvarSIGNs.png" class="absolute" style="top: 80px; right: -75px; width: 400px; "></p>
 </section>
-<section id="section-1" class="slide level2" data-background-color="#00bf63">
-<h2></h2>
+<section id="predictive-analyses-using-r-packages-bsvars-and-bsvarsigns" class="slide level2" data-background-color="#001D31">
+<h2><span style="color: #ff68b4;">predictive analyses using R packages bsvars and bsvarSIGNs</span></h2>
 <p><span class="math display">\[ \]</span></p>
-<h3 id="structural-vector-autoregressions">Structural Vector Autoregressions</h3>
-<h3 style="color:#ffd700;" id="identification-of-structural-vars">Identification of Structural VARs</h3>
-<h3 style="color:#ffd700;" id="dynamic-causal-effects">Dynamic Causal Effects</h3>
-<h3 style="color:#ffd700;" id="bayesian-estimation">Bayesian Estimation</h3>
-<h3 id="monetary-policy-analysis-using-the-bsvars-package">Monetary Policy Analysis Using the <a href="https://cran.r-project.org/package=bsvars">bsvars</a> Package</h3>
+<h3 style="color:#ff68b4;" id="structural-vector-autoregressions">structural vector autoregressions</h3>
+<h3 style="color:#ff68b4;" id="predictive-analyses-using-structural-vars">predictive analyses using structural VARs</h3>
+<h3 style="color:#ff68b4;" id="bsvars-and-bsvarsigns-features">bsvars and bsvarSIGNs features</h3>
+<h3 style="color:#ff68b4;" id="a-small-monetary-policy-system-analysis">a small monetary policy system analysis</h3>
 </section>
-<section id="materials" class="slide level2" data-background-color="#00bf63">
-<h2>Materials</h2>
+<section id="materials" class="slide level2" data-background-color="#001D31">
+<h2><span style="color: #ff68b4;">materials</span></h2>
 <p><span class="math display">\[ \]</span></p>
-<h3 style="color:#ffd700;" id="lecture-slides-as-a-website">Lecture Slides <a href="https://bsvars.github.io/2024-10-be24-bsvars">as a Website</a></h3>
-<h3 style="color:#ffd700;" id="r-script-for-your-own-australian-monetary-policy-analysis"><a href="https://github.com/bsvars/2024-10-be24-bsvars/blob/main/be24-bsvars.R">R script</a> for your own Australian monetary policy analysis</h3>
-<h3 style="color:#ffd700;" id="github-repo-to-reproduce-the-slides-and-results">GitHub <a href="https://github.com/bsvars/2024-10-be24-bsvars">repo</a> to reproduce the slides and results</h3>
-<h3 style="color:#ffd700;" id="tasks">Tasks</h3>
+<h3 style="color:#ff68b4;" id="lecture-slides-as-a-website">lecture slides <a href="https://bsvars.org/2024-12-F4SG/">as a website</a></h3>
+<h3 style="color:#ff68b4;" id="r-script-for-australian-monetary-policy-analysis"><a href="https://github.com/bsvars/2024-10-be24-bsvars/blob/main/be24-bsvars.R">R script</a> for Australian monetary policy analysis</h3>
+<h3 style="color:#ff68b4;" id="github-repo-to-reproduce-the-slides-and-results">GitHub <a href="https://github.com/bsvars/2024-12-F4SG">repo</a> to reproduce the slides and results</h3>
+<p><span class="math display">\[ \]</span></p>
+<h3 style="color:#ff68b4;" id="bsvars.org-official-project-website"><a href="https://bsvars.org/">bsvars.org</a> official project website</h3>
+<h3 style="color:#ff68b4;" id="bsvars-package-on-cran"><a href="https://cran.r-project.org/package=bsvars">bsvars</a> package on CRAN</h3>
+<h3 style="color:#ff68b4;" id="bsvarsigns-package-on-cran"><a href="https://cran.r-project.org/package=bsvarSIGNs">bsvarSIGNs</a> package on CRAN</h3>
 </section>
-<section id="structural-vector-autoregressions-1" class="slide level2" data-background-color="#00bf63">
-<h2><span style="color: #ffd700;">Structural Vector Autoregressions</span></h2>
+<section id="structural-vector-autoregressions-1" class="slide level2" data-background-color="#001D31">
+<h2><span style="color: #ff68b4;">structural vector autoregressions</span></h2>
 </section>
 <section id="structural-vector-autoregressions-2" class="slide level2">
-<h2>Structural Vector Autoregressions</h2>
+<h2>structural vector autoregressions</h2>
 <ul>
 <li>go-to models for the analysis of policy effects</li>
 </ul>
 <div>
 <ul>
 <li class="fragment">facilitate the analysis of <strong>dynamic causal effects</strong> of a well-isolated cause</li>
-<li class="fragment">extensively used for: <em>monetary</em> and <em>fiscal</em> policy, <em>financial</em> markets, …</li>
 <li class="fragment">relatively simple to work with data and provide <em>empirical evidence on the propagation of shocks</em> through economies and markets</li>
-<li class="fragment">provide data-driven stylised facts to be incorporated in theoretical model</li>
-<li class="fragment">require identification of the cause of the dynamic effects</li>
+<li class="fragment">provide data-driven stylised facts to be incorporated in theoretical models</li>
+<li class="fragment">extensively used for: <em>monetary</em> and <em>fiscal</em> policy, <em>financial</em> markets, …</li>
 <li class="fragment">extendible: <em>featuring many variations in specification</em>
 <ul>
 <li class="fragment">non-normality</li>
 <li class="fragment">heteroskedasticity</li>
 <li class="fragment">time-varying parameters</li>
-<li class="fragment">Bayesian</li>
+<li class="fragment">Bayesian hierarchical modelling</li>
 </ul></li>
 <li class="fragment">Proposed by <a href="https://doi.org/10.2307/1912017">Sims (1980)</a></li>
 </ul>
 </div>
 <div class="footer">
-<p><a href="https://bsvars.github.io/2024-10-be24-bsvars">Bayesian Structural VARs</a></p>
+<p><a href="https://bsvars.org">bsvars.org</a></p>
 </div>
 </section>
 <section id="structural-vector-autoregressions-3" class="slide level2">
-<h2>Structural Vector Autoregressions</h2>
+<h2>structural vector autoregressions</h2>
 <div class="footer">
-<p><a href="https://bsvars.github.io/2024-10-be24-bsvars">Bayesian Structural VARs</a></p>
+<p><a href="https://bsvars.org">bsvars.org</a></p>
 </div>
-<h3 id="the-model.">The model.</h3>
+<h3 id="the-model.">the model.</h3>
 <p><span class="math display">\[\begin{align}
-\text{VAR equation: }&amp;&amp; y_t &amp;= \mathbf{A}_1 y_{t-1} + \dots + \mathbf{A}_p y_{t-p} + \boldsymbol\mu_0 + \epsilon_t\\[1ex]
+\text{VAR equation: }&amp;&amp; y_t &amp;= \mathbf{A}_1 y_{t-1} + \dots + \mathbf{A}_p y_{t-p} + \mathbf{A}_d x_{t} + \epsilon_t\\[1ex]
 \text{structural equation: }&amp;&amp; \mathbf{B}\epsilon_t &amp;= u_t\\[1ex]
-\text{structural shocks: }&amp;&amp; u_t |Y_{t-1} &amp;\sim N_N\left(\mathbf{0}_N,\mathbf{I}_N\right)
+\text{structural shocks: }&amp;&amp; u_t |Y_{t-1} &amp;\sim N_N\left(\mathbf{0}_N,\text{diag}\left(\boldsymbol\sigma_t^2\right)\right)
 \end{align}\]</span></p>
 <div class="fragment">
 <!-- -->
-<h3 id="notation.">Notation.</h3>
+<h3 id="notation.">notation.</h3>
 <ul>
-<li><p><span class="math inline">\(\mathbf{B}\)</span> - <span class="math inline">\(N\times N\)</span> structural matrix of contemporaneous relationships</p></li>
-<li><p><span class="math inline">\(u_t\)</span> - <span class="math inline">\(N\)</span>-vector of structural shocks at time <span class="math inline">\(t\)</span></p>
-<p>Isolating these shocks allows us to <em>identify dynamic effects of uncorrelated shocks</em> on variables <span class="math inline">\(y_t\)</span></p></li>
-<li><p><span class="math inline">\(\epsilon_t\)</span> - <span class="math inline">\(N\)</span>-vector with error terms at time <span class="math inline">\(t\)</span></p></li>
-<li><p>the rest as in the lecture on <a href="https://bsvars.github.io/2024-10-be24-bsvarSIGNs/#/varp-model">Bayesian VARs</a></p></li>
+<li><span class="math inline">\(y_t\)</span> - <span class="math inline">\(N\)</span>-vector of variables at time <span class="math inline">\(t\)</span></li>
+<li><span class="math inline">\(\mathbf{A}_i\)</span> and <span class="math inline">\(\mathbf{B}\)</span> - <span class="math inline">\(N\times N\)</span> matrices of autoregressive and structural coefficients</li>
+<li><span class="math inline">\(\epsilon_t\)</span> and <span class="math inline">\(u_t\)</span> - <span class="math inline">\(N\)</span>-vectors of error terms and structural shocks at time <span class="math inline">\(t\)</span></li>
+<li><span class="math inline">\(\boldsymbol\sigma_t^2\)</span> - <span class="math inline">\(N\)</span>-vector structural shock variances</li>
 </ul>
 </div>
 </section>
-<section id="section-2" class="slide level2" data-background-color="#00bf63">
+<section id="svars-hierarchical-prior-distributions" class="slide level2">
+<h2>SVARs: hierarchical prior distributions</h2>
+<div class="footer">
+<p><a href="https://bsvars.org">bsvars.org</a></p>
+</div>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><img data-src="bsvars.png" width="120"></p>
+<ul>
+<li>normal-generalised normal prior for <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span></li>
+<li>3-level local-global equation-specific shrinkage</li>
+<li>Minnesota prior for non-stationary time series</li>
+<li>improves model-fit and forecasting precision</li>
+</ul>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:45%;">
+<p><img data-src="bsvarSIGNs.png" width="120"></p>
+<ul>
+<li>normal-inverse Wishart prior for <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{\Sigma} = (\mathbf{B}'\mathbf{B})^{-1}\)</span></li>
+<li>estimated Minnesota prior shrinkage levels</li>
+<li>Minnesota prior for non-stationary time series</li>
+<li>improves model-fit and forecasting precision</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="svars-volatility-modelling" class="slide level2">
+<h2>SVARs: volatility modelling</h2>
+<div class="footer">
+<p><a href="https://bsvars.org">bsvars.org</a></p>
+</div>
+<div class="columns">
+<div class="column" style="width:65%;">
+<p><img data-src="bsvars.png" width="120"></p>
+<ul>
+<li><p>homoskedasticity <span class="math inline">\(\boldsymbol\sigma_{n.t}^2 = 1\)</span></p></li>
+<li><p>stochastic volatility</p></li>
+<li><p>stationary Markov-switching heteroskedasticity</p></li>
+<li><p>non-parametric Markov-switching heteroskedasticity</p></li>
+<li><p>joint distribution of structural shocks</p>
+<ul>
+<li>normal</li>
+<li>finite mixtures of normal distributions</li>
+<li>non-parametric mixtures of normal distributions</li>
+<li>Student-t</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:30%;">
+<p><img data-src="bsvarSIGNs.png" width="120"></p>
+<ul>
+<li>homoskedastic</li>
+<li>normal</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="svars-structural-identification" class="slide level2">
+<h2>SVARs: structural identification</h2>
+<div class="footer">
+<p><a href="https://bsvars.org">bsvars.org</a></p>
+</div>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><img data-src="bsvars.png" width="120"></p>
+<ul>
+<li>exclusion restrictions</li>
+<li>time-varying volatility</li>
+<li>non-normality</li>
+</ul>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:45%;">
+<p><img data-src="bsvarSIGNs.png" width="120"></p>
+<ul>
+<li>sign restrictions</li>
+<li>exclusion restrictions</li>
+<li>narrative restrictions</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="predictive-analyses-using-structural-vars-1" class="slide level2" data-background-color="#001D31">
+<h2><span style="color: #ff68b4;">predictive analyses using structural VARs</span></h2>
+</section>
+<section id="the-objective-of-economic-forecasting" class="slide level2">
+<h2>the objective of economic forecasting</h2>
+<div class="footer">
+<p><a href="https://bsvars.org">bsvars.org</a></p>
+</div>
+<p><span class="math inline">\(\left.\right.\)</span></p>
+<p>… is to use the available data to provide a statistical characterisation of the unknown future values of quantities of interest.</p>
+<p><span class="math inline">\(\left.\right.\)</span></p>
+<p>The full statistical characterisation of the unknown future values of random variables is given by their <em>predictive density</em>.</p>
+<p><span class="math inline">\(\left.\right.\)</span></p>
+<p>Simplified outcomes in a form of statistics summarising the predictive densities are usually used in decision-making processes.</p>
+<p><span class="math inline">\(\left.\right.\)</span></p>
+<p>Summary statistics are also communicated to general audiences.</p>
+</section>
+<section id="one-period-ahead-predictive-density" class="slide level2">
+<h2>one-period ahead predictive density</h2>
+<div class="footer">
+<p><a href="https://bsvars.org">bsvars.org</a></p>
+</div>
+<h3 id="svar-model.">SVAR model.</h3>
+<p><span class="math display">\[\begin{align*}
+y_t &amp;= \mathbf{A}_1 y_{t-1} + \dots + \mathbf{A}_p y_{t-p} + \mathbf{A}_d x_{t} + \epsilon_t\\[2ex]
+\epsilon_t|Y_{t-1} &amp;\sim iidN_N\left(\mathbf{0}_N,\mathbf\Sigma_t\right)\\[2ex]
+\mathbf\Sigma_t &amp;= \mathbf{B}^{-1} \text{diag}\left(\boldsymbol\sigma^2_t\right)\mathbf{B}^{-1\prime}
+\end{align*}\]</span></p>
+<h3 id="one-period-ahead-conditional-predictive-density.">one-period ahead conditional predictive density.</h3>
+<p>… is implied by the model formulation: <span class="math display">\[\begin{align*}
+y_{t+h}|Y_{t+h-1},\mathbf{A},\mathbf\Sigma_{t+h} &amp;\sim N_N\left(\mathbf{A}_1 y_{t+h-1} + \dots + \mathbf{A}_p y_{t+h-p} + \mathbf{A}_d x_{t+h},\mathbf\Sigma_{t+h}\right)
+\end{align*}\]</span></p>
+</section>
+<section id="one-period-ahead-predictive-density-1" class="slide level2">
+<h2>one-period ahead predictive density</h2>
+<div class="footer">
+<p><a href="https://bsvars.org">bsvars.org</a></p>
+</div>
+<p><span class="math inline">\(\left.\right.\)</span></p>
+<p>Bayesian forecasting takes into account the uncertainty w.r.t. parameter estimation by integrating it out from the predictive density.</p>
+<p><span class="math display">\[\begin{align*}
+&amp;\\
+p(y_{T+1}|Y,X) &amp;= \int p(y_{T+1}|Y_{T},\mathbf{A},\mathbf\Sigma_{T+1}) p(\mathbf{A},\mathbf\Sigma_{T+1}|Y,X) d(\mathbf{A},\mathbf\Sigma_{T+1})\\ &amp;
+\end{align*}\]</span></p>
+<ul>
+<li><span class="math inline">\(p(y_{T+1}|Y,X)\)</span> - predictive density</li>
+<li><span class="math inline">\(p(y_{T+1}|Y_{t},\mathbf{A},\mathbf\Sigma_{T+1})\)</span> - one-period-ahead conditional predictive density</li>
+<li><span class="math inline">\(p(\mathbf{A},\mathbf\Sigma_{T+1}|Y,X)\)</span> - marginal posterior distribution</li>
+<li>includes volatility forecasting <span class="math inline">\(\boldsymbol\sigma^2_{T+1}\)</span> to form <span class="math inline">\(\mathbf\Sigma_{T+1}\)</span></li>
+</ul>
+</section>
+<section id="sampling-from-the-predictive-density" class="slide level2">
+<h2>sampling from the predictive density</h2>
+<div class="footer">
+<p><a href="https://bsvars.org">bsvars.org</a></p>
+</div>
+<p><span class="math inline">\(\left.\right.\)</span></p>
+<h4 id="step-1-sample-from-the-posterior">step 1: sample from the posterior</h4>
+<p>… and obtain <span class="math inline">\(S\)</span> draws <span class="math inline">\(\left\{ \mathbf{A}^{(s)},\mathbf\Sigma_{T+1}^{(s)} \right\}_{s=1}^{S}\)</span></p>
+<p><span class="math inline">\(\left.\right.\)</span></p>
+<h4 id="step-2-sample-from-the-predictive-density">step 2: sample from the predictive density</h4>
+<p>In order to obtain draws from <span class="math inline">\(p(y_{T+1}|Y,X)\)</span>, for each of the <span class="math inline">\(S\)</span> draws of <span class="math inline">\((\mathbf{A},\mathbf\Sigma_{T+1})\)</span> sample the corresponding draw of <span class="math inline">\(y_{T+1}\)</span>:</p>
+<p>Sample <span class="math inline">\(y_{T+1}^{(s)}\)</span> from <span class="math display">\[
+N_N\left(\mathbf{A}_1^{(s)} y_{T} + \dots + \mathbf{A}_p^{(s)} y_{T-p+1} + \mathbf{A}_d^{(s)} x_{T+1},\mathbf\Sigma_{T+1}^{(s)}\right)
+\]</span> and obtain <span class="math inline">\(\left\{y_{T+1}^{(s)}\right\}_{s=1}^{S}\)</span></p>
+</section>
+<section id="impulse-response-functions" class="slide level2">
+<h2>impulse response functions</h2>
+<div class="footer">
+<p><a href="https://bsvars.org">bsvars.org</a></p>
+</div>
+<p><span class="math inline">\(\left.\right.\)</span></p>
+<p><strong>Impulse response functions</strong> to <em>orthogonal shocks</em> computed for an empirically relevant SVAR model are considered the <text style="color:#ff68b4;"><strong>dynamic causal effects</strong></text> of the underlying shocks <span class="math inline">\(u_t\)</span> on economic measurements <span class="math inline">\(y_{t+i}\)</span> <span class="math inline">\(i\)</span> periods ahead.</p>
+<p><span class="math display">\[\begin{align*}
+\frac{\partial y_{n.t+i}}{\partial u_{j.t}}&amp;=\theta_{nj.i}
+\end{align*}\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\theta_{nj.i}\)</span> - response of <span class="math inline">\(n\)</span>th variable to <span class="math inline">\(j\)</span>th shock <span class="math inline">\(i\)</span> periods after shock’s occurrence</p>
+<p>for <span class="math inline">\(i=0,1,\dots,h\)</span> and <span class="math inline">\(n,j=1,\dots,N\)</span></p></li>
+</ul>
+</section>
+<section id="impulse-response-functions-1" class="slide level2">
+<h2>impulse response functions</h2>
+<div class="footer">
+<p><a href="https://bsvars.org">bsvars.org</a></p>
+</div>
+<p><span class="math inline">\(\left.\right.\)</span></p>
+<h3 id="as-a-difference-in-conditional-forecasts.">…as a difference in conditional forecasts.</h3>
+<p><span class="math display">\[\begin{align}
+\mathbf\Theta_{h[\cdot i]} &amp;= \mathbb{E}\left[\mathbf{y}_{T+h}| u_{i.T} = 1,\mathbf{Y},\mathbf{X}\right] - \mathbb{E}\left[\mathbf{y}_{T+h}| \mathbf{Y},\mathbf{X}\right]
+\end{align}\]</span></p>
+<h3 id="as-the-shock-propagation-mechanism.">…as the shock propagation mechanism.</h3>
+<p><span class="math display">\[\begin{align}
+y_t &amp;= \mathbf{B}^{-1}\mathbf{u}_t + \mathbf{A}_1 y_{t-1}\\
+&amp;= \mathbf{B}^{-1}\mathbf{u}_t + \mathbf{A}_1 \mathbf{B}^{-1}\mathbf{u}_{t-1} + \mathbf{A}_1^2 y_{t-2}\\
+&amp;\dots\\
+&amp;= \mathbf{\Theta}_0\mathbf{u}_t + \mathbf{\Theta}_1\mathbf{u}_{t-1} + \mathbf{\Theta}_2\mathbf{u}_{t-2} + \dots
+\end{align}\]</span></p>
+</section>
+<section id="forecast-error-variance-decompositions" class="slide level2">
+<h2>forecast error variance decompositions</h2>
+<div class="footer">
+<p><a href="https://bsvars.org">bsvars.org</a></p>
+</div>
+<p>… are a way to quantify the relative importance of the shocks in explaining the forecast error variance of the variables in the system.</p>
+<h4 id="forecast-error-covariance-matrix.">forecast error covariance matrix.</h4>
+<p><span class="math display">\[\begin{align}
+\mathbf\Sigma_{T+h} &amp;=
+\mathbf{\Theta}_h \text{diag}\left(\boldsymbol\sigma^2_{T+h}\right)\mathbf{\Theta}_h^{\prime}
+\end{align}\]</span></p>
+<h4 id="forecast-error-variance.">forecast error variance.</h4>
+<p>For the first variable, at the forecast horizon <span class="math inline">\(h\)</span>, for <span class="math inline">\(N=2\)</span>:</p>
+<p><span class="math display">\[\begin{align}
+\mathbf\Sigma_{T+h[11]} &amp;=
+\mathbf{\Theta}_{h[11]}^2 \sigma^2_{1.T+h} + \mathbf{\Theta}_{h[12]}^2 \sigma^2_{2.T+h}
+\end{align}\]</span></p>
+<h4 id="forecast-error-variance-decomposition.">forecast error variance decomposition.</h4>
+<p>First shock’s contribution to the forecast error variance of the first variable:</p>
+<p><span class="math display">\[\begin{align}
+\mathbf\Sigma_{T+h[11]} &amp;= \frac{\mathbf{\Theta}_{h[11]}^2 \sigma^2_{1.T+h}}{
+\mathbf{\Theta}_{h[11]}^2 \sigma^2_{1.T+h} + \mathbf{\Theta}_{h[12]}^2 \sigma^2_{2.T+h}}
+\end{align}\]</span></p>
+</section>
+<section id="bsvars-and-bsvarsigns-features-1" class="slide level2" data-background-color="#001D31">
+<h2><span style="color: #ff68b4;">bsvars and bsvarSIGNs features</span></h2>
+</section>
+<section id="bsvars-and-bsvarsigns-features-2" class="slide level2">
+<h2>bsvars and bsvarSIGNs features</h2>
+<div class="footer">
+<p><a href="https://bsvars.org">bsvars.org</a></p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="bsvars_cran.png" class="absolute" style="top: 100px; width: 530px; "></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="bsvarSIGNs_cran.png" class="absolute" style="top: 100px; width: 530px; "></p>
+</div>
+</div>
+</section>
+<section id="bsvars-and-bsvarsigns-features-3" class="slide level2">
+<h2>bsvars and bsvarSIGNs features</h2>
+<div class="footer">
+<p><a href="https://bsvars.org">bsvars.org</a></p>
+</div>
+<p><span class="math display">\[ \]</span></p>
+<ul>
+<li>Bayesian estimation of Structural VARs</li>
+<li>coherent code structure, workflows, and objects</li>
+<li>excellent computational speed</li>
+<li>frontier econometric &amp; numerical techniques</li>
+<li>written in <strong>C++</strong> using <strong>Rcpp</strong> and <strong>RcppArmadillo</strong></li>
+<li>data analysis in <strong>R</strong></li>
+</ul>
+</section>
+<section id="bsvars-and-bsvarsigns-features-4" class="slide level2" data-background-color="#001D31">
+<h2><span style="color: #ff68b4;">bsvars and bsvarSIGNs features</span></h2>
+<div class="footer">
+<p><a href="https://bsvars.org">bsvars.org</a></p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="bsvars.png" width="120"></p>
+<ul>
+<li>package and data loading</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(bsvars)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">data</span>(us_fiscal_lsuw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>simple model setup</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>spec <span class="ot">=</span> specify_bsvar<span class="sc">$</span><span class="fu">new</span>(us_fiscal_lsuw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>simple estimation</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>burn <span class="ot">=</span> <span class="fu">estimate</span>(spec, <span class="at">S =</span> <span class="dv">1000</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>post <span class="ot">=</span> <span class="fu">estimate</span>(burn, <span class="at">S =</span> <span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><img data-src="bsvarSIGNs.png" width="120"></p>
+<ul>
+<li>package and data loading</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(bsvarSIGNs)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">data</span>(optimism)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>simple model setup</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>spec <span class="ot">=</span> specify_bsvarSIGN<span class="sc">$</span><span class="fu">new</span>(optimism)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>simple estimation</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>post <span class="ot">=</span> <span class="fu">estimate</span>(spec, <span class="at">S =</span> <span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bsvars-and-bsvarsigns-features-5" class="slide level2" data-background-color="#001D31">
+<h2><span style="color: #ff68b4;">bsvars and bsvarSIGNs features</span></h2>
+<div class="footer">
+<p><a href="https://bsvars.org">bsvars.org</a></p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="bsvars.png" width="120"></p>
+<ul>
+<li>structural analyses</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>irfs <span class="ot">=</span> <span class="fu">compute_impulse_responses</span>(post , <span class="at">horizon =</span> <span class="dv">12</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>fevd <span class="ot">=</span> <span class="fu">compute_variance_decompositions</span>(post, <span class="at">horizon =</span> <span class="dv">12</span>)</span>
+<span id="cb7-3"><a href="#cb7-3"></a>hds  <span class="ot">=</span> <span class="fu">compute_historical_decompositions</span>(post)</span>
+<span id="cb7-4"><a href="#cb7-4"></a>ss   <span class="ot">=</span> <span class="fu">compute_structural_shocks</span>(post)</span>
+<span id="cb7-5"><a href="#cb7-5"></a>csds <span class="ot">=</span> <span class="fu">compute_conditional_sd</span>(post)</span>
+<span id="cb7-6"><a href="#cb7-6"></a>sddr <span class="ot">=</span> <span class="fu">verify_identification</span>(post)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><img data-src="bsvarSIGNs.png" width="120"></p>
+<ul>
+<li>structural analyses</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>irfs <span class="ot">=</span> <span class="fu">compute_impulse_responses</span>(post , <span class="at">horizon =</span> <span class="dv">12</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>fevd <span class="ot">=</span> <span class="fu">compute_variance_decompositions</span>(post, <span class="at">horizon =</span> <span class="dv">12</span>)</span>
+<span id="cb8-3"><a href="#cb8-3"></a>hds  <span class="ot">=</span> <span class="fu">compute_historical_decompositions</span>(post)</span>
+<span id="cb8-4"><a href="#cb8-4"></a>ss   <span class="ot">=</span> <span class="fu">compute_structural_shocks</span>(post)</span>
+<span id="cb8-5"><a href="#cb8-5"></a>csds <span class="ot">=</span> <span class="fu">compute_conditional_sd</span>(post)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bsvars-and-bsvarsigns-features-6" class="slide level2" data-background-color="#001D31">
+<h2><span style="color: #ff68b4;">bsvars and bsvarSIGNs features</span></h2>
+<div class="footer">
+<p><a href="https://bsvars.org">bsvars.org</a></p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="bsvars.png" width="120"></p>
+<ul>
+<li>predictive analyses</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>fvs  <span class="ot">=</span> <span class="fu">compute_fitted_values</span>(post)</span>
+<span id="cb9-2"><a href="#cb9-2"></a>fore <span class="ot">=</span> <span class="fu">forecast</span>(post, <span class="at">horizon =</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>plots and summaries</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">plot</span>(irfs)</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">summary</span>(irfs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><img data-src="bsvarSIGNs.png" width="120"></p>
+<ul>
+<li>predictive analyses</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>fvs  <span class="ot">=</span> <span class="fu">compute_fitted_values</span>(post)</span>
+<span id="cb11-2"><a href="#cb11-2"></a>fore <span class="ot">=</span> <span class="fu">forecast</span>(post, <span class="at">horizon =</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>plots and summaries</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">plot</span>(irfs)</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">summary</span>(irfs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bsvars-and-bsvarsigns-features-7" class="slide level2" data-background-color="#001D31">
+<h2><span style="color: #ff68b4;">bsvars and bsvarSIGNs features</span></h2>
+<div class="footer">
+<p><a href="https://bsvars.org">bsvars.org</a></p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="bsvars.png" width="120"></p>
+<ul>
+<li>workflow with the pipe</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">library</span>(bsvars)</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">data</span>(us_fiscal_lsuw)</span>
+<span id="cb13-3"><a href="#cb13-3"></a></span>
+<span id="cb13-4"><a href="#cb13-4"></a>us_fiscal_lsuw <span class="sc">|&gt;</span> </span>
+<span id="cb13-5"><a href="#cb13-5"></a>  specify_bsvar<span class="sc">$</span><span class="fu">new</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb13-6"><a href="#cb13-6"></a>  <span class="fu">estimate</span>(<span class="at">S =</span> <span class="dv">1000</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb13-7"><a href="#cb13-7"></a>  <span class="fu">estimate</span>(<span class="at">S =</span> <span class="dv">10000</span>) <span class="ot">-&gt;</span> post</span>
+<span id="cb13-8"><a href="#cb13-8"></a></span>
+<span id="cb13-9"><a href="#cb13-9"></a>post <span class="sc">|&gt;</span> <span class="fu">compute_impulse_responses</span>(<span class="at">horizon =</span> <span class="dv">12</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span>
+<span id="cb13-10"><a href="#cb13-10"></a>post <span class="sc">|&gt;</span> <span class="fu">compute_variance_decompositions</span>(<span class="at">horizon =</span> <span class="dv">12</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span>
+<span id="cb13-11"><a href="#cb13-11"></a>post <span class="sc">|&gt;</span> <span class="fu">compute_historical_decompositions</span>() <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span>
+<span id="cb13-12"><a href="#cb13-12"></a>post <span class="sc">|&gt;</span> <span class="fu">compute_structural_shocks</span>() <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span>
+<span id="cb13-13"><a href="#cb13-13"></a>post <span class="sc">|&gt;</span> <span class="fu">compute_conditional_sd</span>() <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span>
+<span id="cb13-14"><a href="#cb13-14"></a>post <span class="sc">|&gt;</span> <span class="fu">forecast</span>(<span class="at">horizon =</span> <span class="dv">12</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span>
+<span id="cb13-15"><a href="#cb13-15"></a>post <span class="sc">|&gt;</span> <span class="fu">verify_identification</span>() <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><img data-src="bsvarSIGNs.png" width="120"></p>
+<ul>
+<li>workflow with the pipe</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">library</span>(bsvarSIGNs)</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">data</span>(optimism)</span>
+<span id="cb14-3"><a href="#cb14-3"></a></span>
+<span id="cb14-4"><a href="#cb14-4"></a>optimism <span class="sc">|&gt;</span> </span>
+<span id="cb14-5"><a href="#cb14-5"></a>  specify_bsvarSIGN<span class="sc">$</span><span class="fu">new</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb14-6"><a href="#cb14-6"></a>  <span class="fu">estimate</span>(<span class="at">S =</span> <span class="dv">10000</span>) <span class="ot">-&gt;</span> post</span>
+<span id="cb14-7"><a href="#cb14-7"></a></span>
+<span id="cb14-8"><a href="#cb14-8"></a>post <span class="sc">|&gt;</span> <span class="fu">compute_impulse_responses</span>(<span class="at">horizon =</span> <span class="dv">12</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span>
+<span id="cb14-9"><a href="#cb14-9"></a>post <span class="sc">|&gt;</span> <span class="fu">compute_variance_decompositions</span>(<span class="at">horizon =</span> <span class="dv">12</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span>
+<span id="cb14-10"><a href="#cb14-10"></a>post <span class="sc">|&gt;</span> <span class="fu">compute_historical_decompositions</span>() <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span>
+<span id="cb14-11"><a href="#cb14-11"></a>post <span class="sc">|&gt;</span> <span class="fu">compute_structural_shocks</span>() <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span>
+<span id="cb14-12"><a href="#cb14-12"></a>post <span class="sc">|&gt;</span> <span class="fu">compute_conditional_sd</span>() <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span>
+<span id="cb14-13"><a href="#cb14-13"></a>post <span class="sc">|&gt;</span> <span class="fu">forecast</span>(<span class="at">horizon =</span> <span class="dv">12</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bsvars-and-bsvarsigns-features-8" class="slide level2" data-background-color="#001D31">
+<h2><span style="color: #ff68b4;">bsvars and bsvarSIGNs features</span></h2>
+<div class="footer">
+<p><a href="https://bsvars.org">bsvars.org</a></p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="bsvars.png" width="120"></p>
+<ul>
+<li>progress bar</li>
+</ul>
+<p><img data-src="bsvars_progress.png" width="500"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="bsvarSIGNs.png" width="120"></p>
+<ul>
+<li>progress bar</li>
+</ul>
+<p><img data-src="bsvarSIGNs_progress.png" width="500"></p>
+</div>
+</div>
+</section>
+<section id="a-small-monetary-policy-system-analysis-1" class="slide level2" data-background-color="#001D31">
+<h2><span style="color: #ff68b4;">a small monetary policy system analysis</span></h2>
+</section>
+<section id="a-small-monetary-policy-system-analysis-2" class="slide level2">
+<h2>a small monetary policy system analysis</h2>
+<div class="footer">
+<p><a href="https://bsvars.org">bsvars.org</a></p>
+</div>
+</section>
+<section id="bsvars-modeling-of-monetary-policy" class="slide level2">
+<h2><a href="https://bsvars.github.io" style="color:#8c52ff;">bsvars</a> modeling of monetary policy</h2>
+<h3 id="australian-domestic-sector.">Australian domestic sector.</h3>
+<p><span class="math display">\[\begin{align}
+y_t = \begin{bmatrix} rgdp_t &amp; cpi_t &amp; CR_t &amp; EX_t &amp; aord_t \end{bmatrix}'
+\end{align}\]</span></p>
+<ul>
+<li>monthly data from August 1990 to March 2024</li>
+<li>quarterly variables interpolated to monthly frequency</li>
+</ul>
+</section>
+<section id="bsvars-modeling-of-monetary-policy-1" class="slide level2">
+<h2><a href="https://bsvars.github.io" style="color:#8c52ff;">bsvars</a> modeling of monetary policy</h2>
+<h3 id="foreign-sector.">Foreign sector.</h3>
+<p><span class="math display">\[\begin{align}
+x_t = \begin{bmatrix} rgdp_t^{(US)} &amp; cpi_t^{(US)} &amp; FFR_t \end{bmatrix}'
+\end{align}\]</span></p>
+<ul>
+<li>monthly data from August 1990 to March 2024</li>
+<li>quarterly variables interpolated to monthly frequency</li>
+<li>contemporaneous and four lagged values are included in the model as exogenous variables</li>
+</ul>
+</section>
+<section id="section-1" class="slide level2">
 <h2></h2>
-<p><img data-src="social.png" class="absolute" style="top: 30px; right: 200px; width: 800px; "></p>
+<p><img data-src="bsvars.png" class="absolute" style="top: 550px; right: 10px; width: 120px; "></p>
+<h3 id="zero-restriction-identified-system.">Zero-restriction-identified system.</h3>
+<p><span class="math display">\[\begin{align}
+\begin{bmatrix}
+B_{0.11}&amp;0&amp;0&amp;0&amp;0\\
+B_{0.21}&amp;B_{0.22}&amp;0&amp;0&amp;0\\
+B_{0.31}&amp;B_{0.32}&amp;B_{0.33}&amp;0&amp;0\\
+B_{0.41}&amp;B_{0.42}&amp;B_{0.43}&amp;B_{0.44}&amp;0\\
+B_{0.51}&amp;B_{0.52}&amp;B_{0.53}&amp;B_{0.54}&amp;B_{0.55}
+\end{bmatrix}
+\begin{bmatrix}rgdp_t \\ cpi_t \\ CR_t \\ EX_t\\ aord_t \end{bmatrix} &amp;= \dots +
+\begin{bmatrix} u_t^{ad} \\ u_t^{as} \\ u_t^{mps} \\ u_t^{ex} \\ u_t^{aord} \end{bmatrix}
+\end{align}\]</span></p>
+<h3 id="identified-shocks.">Identified shocks.</h3>
+<ul>
+<li><span class="math inline">\(u_t^{mps}\)</span> - monetary policy shock</li>
+<li><span class="math inline">\(u_t^{ex}\)</span> - currency shock</li>
+</ul>
+</section>
+<section id="specify-and-estimate-the-svar" class="slide level2">
+<h2>specify and estimate the SVAR</h2>
+<p><img data-src="bsvars.png" class="absolute" style="top: -20px; right: 10px; width: 120px; "></p>
+<p><span class="math display">\[\begin{align}
+&amp;
+\end{align}\]</span></p>
+<div class="cell" data-hash="index_cache/revealjs/spec_55ed9cfca284cea8c0ec5d920f5d139e">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">library</span>(bsvars)</span>
+<span id="cb15-2"><a href="#cb15-2"></a></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="co"># upload data</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="fu">data</span>(us_fiscal_lsuw)    <span class="co"># upload dependent variables</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="fu">data</span>(us_fiscal_ex)      <span class="co"># upload exogenous variables</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="co"># specify the model and set seed</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb15-9"><a href="#cb15-9"></a>spec  <span class="ot">=</span> specify_bsvar<span class="sc">$</span><span class="fu">new</span>(</span>
+<span id="cb15-10"><a href="#cb15-10"></a>  us_fiscal_lsuw, </span>
+<span id="cb15-11"><a href="#cb15-11"></a>  <span class="at">p =</span> <span class="dv">4</span>, </span>
+<span id="cb15-12"><a href="#cb15-12"></a>  <span class="at">exogenous =</span> us_fiscal_ex</span>
+<span id="cb15-13"><a href="#cb15-13"></a>)</span>
+<span id="cb15-14"><a href="#cb15-14"></a></span>
+<span id="cb15-15"><a href="#cb15-15"></a><span class="co"># run the burn-in</span></span>
+<span id="cb15-16"><a href="#cb15-16"></a>burn        <span class="ot">=</span> <span class="fu">estimate</span>(spec, <span class="at">S =</span> <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>**************************************************|
+bsvars: Bayesian Structural Vector Autoregressions|
+**************************************************|
+ Gibbs sampler for the SVAR model                 |
+**************************************************|
+ Progress of the MCMC simulation for 1000 draws
+    Every draw is saved via MCMC thinning
+ Press Esc to interrupt the computations
+**************************************************|</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># estimate the model</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>post      <span class="ot">=</span> <span class="fu">estimate</span>(burn, <span class="at">S =</span> <span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>**************************************************|
+bsvars: Bayesian Structural Vector Autoregressions|
+**************************************************|
+ Gibbs sampler for the SVAR model                 |
+**************************************************|
+ Progress of the MCMC simulation for 10000 draws
+    Every draw is saved via MCMC thinning
+ Press Esc to interrupt the computations
+**************************************************|</code></pre>
+</div>
+</div>
+</section>
+<section id="impulse-responses" class="slide level2">
+<h2>impulse responses</h2>
+<p><img data-src="bsvars.png" class="absolute" style="top: -20px; right: 10px; width: 120px; "></p>
+<p><span class="math display">\[\begin{align}
+&amp;
+\end{align}\]</span></p>
+<div class="cell" data-hash="index_cache/revealjs/bs00_a5c0997c957d8b2249598f24440861bb">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>post <span class="sc">|&gt;</span> <span class="fu">compute_impulse_responses</span>(<span class="at">horizon =</span> <span class="dv">40</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">probability =</span> <span class="fl">0.68</span>, <span class="at">col =</span> <span class="st">"#ff68b4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/bs00-1.png" width="960"></p>
+</div>
+</div>
+</section>
+<section id="forecast-error-variance-decompositions-1" class="slide level2">
+<h2>forecast error variance decompositions</h2>
+<p><img data-src="bsvars.png" class="absolute" style="top: -20px; right: 10px; width: 120px; "></p>
+<p><span class="math display">\[\begin{align}
+&amp;
+\end{align}\]</span></p>
+<div class="cell" data-hash="index_cache/revealjs/bs00fevd_881ddea4496e83addbf0cc25f6b4cd96">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>post <span class="sc">|&gt;</span> <span class="fu">compute_variance_decompositions</span>(<span class="at">horizon =</span> <span class="dv">40</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">col =</span> grad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/bs00fevd-1.png" width="960"></p>
+</div>
+</div>
+</section>
+<section id="conditional-forecasts" class="slide level2">
+<h2>conditional forecasts</h2>
+<p><img data-src="bsvars.png" class="absolute" style="top: -20px; right: 10px; width: 120px; "></p>
+<p><span class="math display">\[\begin{align}
+&amp;
+\end{align}\]</span></p>
+<div class="cell" data-hash="index_cache/revealjs/bs00for_4f22fd892e1e25f5819c890b209df66a">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">data</span>(us_fiscal_ex_forecasts)      <span class="co"># upload exogenous variables future values</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>post <span class="sc">|&gt;</span> </span>
+<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">forecast</span>(<span class="at">horizon =</span> <span class="dv">8</span>, <span class="at">exogenous_forecast =</span> us_fiscal_ex_forecasts) <span class="sc">|&gt;</span> </span>
+<span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">plot</span>(<span class="at">col =</span> <span class="st">"#ff68b4"</span>, <span class="at">data_in_plot =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/bs00for-1.png" width="960"></p>
+</div>
+</div>
+</section>
+<section id="specify-and-estimate-the-svar-1" class="slide level2">
+<h2>specify and estimate the SVAR</h2>
+<p><img data-src="bsvarSIGNs.png" class="absolute" style="top: -20px; right: 10px; width: 120px; "></p>
+<p><span class="math display">\[\begin{align}
+&amp;
+\end{align}\]</span></p>
+<div class="cell" data-hash="index_cache/revealjs/specs_ef48f0513a92e64b3410669f72544bf6">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">library</span>(bsvarSIGNs)</span>
+<span id="cb22-2"><a href="#cb22-2"></a></span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="co"># specify the model and set seed</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a>sign <span class="ot">=</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb22-5"><a href="#cb22-5"></a><span class="fu">diag</span>(sign) <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb22-6"><a href="#cb22-6"></a>sign[<span class="dv">1</span>, <span class="dv">3</span>] <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb22-7"><a href="#cb22-7"></a>sign</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    1   NA    1
+[2,]   NA    1   NA
+[3,]   NA   NA    1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># specify the model</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>spec <span class="ot">=</span> specify_bsvarSIGN<span class="sc">$</span><span class="fu">new</span>(</span>
+<span id="cb24-3"><a href="#cb24-3"></a>  us_fiscal_lsuw,</span>
+<span id="cb24-4"><a href="#cb24-4"></a>  <span class="at">p =</span> <span class="dv">4</span>,</span>
+<span id="cb24-5"><a href="#cb24-5"></a>  <span class="at">sign_irf =</span> sign</span>
+<span id="cb24-6"><a href="#cb24-6"></a>)</span>
+<span id="cb24-7"><a href="#cb24-7"></a></span>
+<span id="cb24-8"><a href="#cb24-8"></a><span class="co"># estimate the hyper-parameters</span></span>
+<span id="cb24-9"><a href="#cb24-9"></a>spec<span class="sc">$</span>prior<span class="sc">$</span><span class="fu">estimate_hyper</span>(<span class="at">S =</span> <span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>**************************************************|
+ Adaptive Metropolis MCMC: hyper parameters       |
+**************************************************|</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># estimate the model</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>posts <span class="ot">=</span> <span class="fu">estimate</span>(spec, <span class="at">S =</span> <span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>**************************************************|
+ bsvarSIGNs: Bayesian Structural VAR with sign,   |
+             zero and narrative restrictions      |
+**************************************************|
+ Progress of simulation for 10000 independent draws
+ Press Esc to interrupt the computations
+**************************************************|</code></pre>
+</div>
+</div>
+</section>
+<section id="impulse-responses-1" class="slide level2">
+<h2>impulse responses</h2>
+<p><img data-src="bsvarSIGNs.png" class="absolute" style="top: -20px; right: 10px; width: 120px; "></p>
+<p><span class="math display">\[\begin{align}
+&amp;
+\end{align}\]</span></p>
+<div class="cell" data-hash="index_cache/revealjs/bs00s_9c0a4cb0dc39fc714d624cb12736f2f1">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>posts <span class="sc">|&gt;</span> <span class="fu">compute_impulse_responses</span>(<span class="at">horizon =</span> <span class="dv">40</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">probability =</span> <span class="fl">0.68</span>, <span class="at">col =</span> <span class="st">"#001D31"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/bs00s-1.png" width="960"></p>
+</div>
+</div>
+</section>
+<section id="forecast-error-variance-decompositions-2" class="slide level2">
+<h2>forecast error variance decompositions</h2>
+<p><img data-src="bsvarSIGNs.png" class="absolute" style="top: -20px; right: 10px; width: 120px; "></p>
+<p><span class="math display">\[\begin{align}
+&amp;
+\end{align}\]</span></p>
+<div class="cell" data-hash="index_cache/revealjs/bs00fevds_1a4a3d3cba7d407e3c5d65293a1641ec">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>posts <span class="sc">|&gt;</span> <span class="fu">compute_variance_decompositions</span>(<span class="at">horizon =</span> <span class="dv">40</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">col =</span> grad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/bs00fevds-1.png" width="960"></p>
+</div>
+</div>
+</section>
+<section id="forecasts" class="slide level2">
+<h2>forecasts</h2>
+<p><img data-src="bsvarSIGNs.png" class="absolute" style="top: -20px; right: 10px; width: 120px; "></p>
+<p><span class="math display">\[\begin{align}
+&amp;
+\end{align}\]</span></p>
+<div class="cell" data-hash="index_cache/revealjs/bs00fors_f0a29d6d9d99c2127cebf268bf0f1aab">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>posts <span class="sc">|&gt;</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>  <span class="fu">forecast</span>(<span class="at">horizon =</span> <span class="dv">8</span>) <span class="sc">|&gt;</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a>  <span class="fu">plot</span>(<span class="at">col =</span> <span class="st">"#001D31"</span>, <span class="at">data_in_plot =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/bs00fors-1.png" width="960"></p>
+</div>
+</div>
+</section>
+<section id="section-2" class="slide level2" data-background-color="#001D31">
+<h2></h2>
+<p><img data-src="social.png" class="absolute" style="top: 10px; right: 10px; width: 1000px; "></p>
 <div class="footer footer-default">
 
 </div>
