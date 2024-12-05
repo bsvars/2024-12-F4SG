@@ -780,13 +780,12 @@ B_{0.31}&B_{0.32}&B_{0.33}
 ### system with sign restrictions.
 
 \begin{align}
+\begin{bmatrix}ttr_t \\ gs_t \\ gdp_t \end{bmatrix} &= \dots +
 \begin{bmatrix}
 +&*&+\\
 *&+&*\\
 *&*&+
-\end{bmatrix}
-\begin{bmatrix}ttr_t \\ gs_t \\ gdp_t \end{bmatrix} &= \dots +
-\begin{bmatrix} u_t^{ttr} \\ u_t^{gs} \\ u_t^{gdp}\end{bmatrix}
+\end{bmatrix}\begin{bmatrix} u_t^{ttr} \\ u_t^{gs} \\ u_t^{gdp}\end{bmatrix}
 \end{align}
 
 
