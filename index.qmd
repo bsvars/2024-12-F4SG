@@ -59,8 +59,6 @@ $$ $$
 
 ### lecture slides [as a website](https://bsvars.org/2024-12-F4SG/) {style="color:#ff68b4;"}
 
-### [R script](https://github.com/bsvars/2024-10-be24-bsvars/blob/main/be24-bsvars.R) for Australian monetary policy analysis{style="color:#ff68b4;"}
-
 ### GitHub [repo](https://github.com/bsvars/2024-12-F4SG) to reproduce the slides and results{style="color:#ff68b4;"}
 
 $$ $$
