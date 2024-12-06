@@ -388,8 +388,11 @@ y_t &= \mathbf{B}^{-1}\mathbf{u}_t + \mathbf{A}_1 y_{t-1}\\
 [bsvars.org](https://bsvars.org)
 :::
 
+$$ $$
 
 ... are a way to quantify the relative importance of the shocks in explaining the forecast error variance of the variables in the system.
+
+$$ $$
 
 #### forecast error covariance matrix.
 
@@ -403,18 +406,35 @@ y_t &= \mathbf{B}^{-1}\mathbf{u}_t + \mathbf{A}_1 y_{t-1}\\
 For the first variable, at the forecast horizon $h$, for $N=2$:
 
 \begin{align}
-\mathbf\Sigma_{T+h[11]} &= 
-\mathbf{\Theta}_{h[11]}^2 \sigma^2_{1.T+h} + \mathbf{\Theta}_{h[12]}^2 \sigma^2_{2.T+h}
+\sum_{i=0}^{h-1}\mathbf\Sigma_{T+i[11]} &= \sum_{i=0}^{h-1}
+\mathbf{\Theta}_{i[11]}^2 \sigma^2_{1.T+i} + \mathbf{\Theta}_{i[12]}^2 \sigma^2_{2.T+i}
 \end{align}
+
+
+
+
+
+
+## forecast error variance decompositions
+::: footer
+[bsvars.org](https://bsvars.org)
+:::
+
+$$ $$
+
+... are a way to quantify the relative importance of the shocks in explaining the forecast error variance of the variables in the system.
+
+$$ $$
 
 #### forecast error variance decomposition.
 
 First shock's contribution to the forecast error variance of the first variable:
 
 \begin{align}
-\mathbf\Sigma_{T+h[11]} &= \frac{\mathbf{\Theta}_{h[11]}^2 \sigma^2_{1.T+h}}{
-\mathbf{\Theta}_{h[11]}^2 \sigma^2_{1.T+h} + \mathbf{\Theta}_{h[12]}^2 \sigma^2_{2.T+h}}
+FEVD_{T+h[11]} &= \sum_{i=0}^{h-1}\frac{\mathbf{\Theta}_{i[11]}^2 \sigma^2_{1.T+i}}{
+\mathbf{\Theta}_{i[11]}^2 \sigma^2_{1.T+i} + \mathbf{\Theta}_{i[12]}^2 \sigma^2_{2.T+i}}
 \end{align}
+
 
 
 
